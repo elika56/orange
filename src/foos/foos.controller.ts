@@ -1,5 +1,6 @@
-import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { WordsService } from './foos.service';
+import { Foo } from './entities/foo.entity';
 
 @Controller('words')
 export class WordsController {
@@ -17,7 +18,7 @@ export class WordsController {
   }
 
   @Post()
-  create(@Body('url') url: string): string {
-    return url;
+  create(@Body() foo: Foo): Foo {
+    return foo;
   }
 }
