@@ -28,4 +28,12 @@ describe('Foos (e2e)', () => {
       .expect((res) => {
         expect(res.body).toBe(0);
       }));
+
+  it('GET /api/words/hello → 1', () =>
+    request(app.getHttpServer())
+      .get('/api/words/hello')
+      .expect(200)
+      .expect((res) => {
+        expect(res.body).toBe(1);
+      }));
 });
