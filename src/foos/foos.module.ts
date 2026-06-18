@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
-import { FoosController } from './foos.controller';
+import { HttpModule } from '@nestjs/axios';
+import { WordsController } from './foos.controller';
 import { WordsService } from './foos.service';
 
 @Module({
-  controllers: [FoosController],
+  imports: [HttpModule],
+  controllers: [WordsController],
   providers: [WordsService],
   exports: [WordsService],
 })
