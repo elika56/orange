@@ -1,14 +1,14 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get, Post, Body } from '@nestjs/common';
 
-@Controller('foos')
-export class FoosController {
+@Controller('words')
+export class WordsController {
   @Get()
   findAll(): string {
     return 'ok';
   }
 
   @Post()
-  create(): string {
-    return 'ok';
+  create(@Body('url') url: string): string {
+    return url;
   }
 }
