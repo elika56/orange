@@ -1,4 +1,5 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Foo } from './entities/foo.entity';
 
 @Controller('foos')
 export class FoosController {
@@ -8,7 +9,7 @@ export class FoosController {
   }
 
   @Post()
-  create(): string {
-    return 'ok';
+  create(@Body() foo: Foo): Foo {
+    return foo;
   }
 }
