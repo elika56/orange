@@ -44,4 +44,12 @@ describe('Foos (e2e)', () => {
       .expect((res) => {
         expect(res.body).toBe(1);
       }));
+
+  it('GET /api/words/orange → 42', () =>
+    request(app.getHttpServer())
+      .get('/api/words/orange')
+      .expect(200)
+      .expect((res) => {
+        expect(res.body).toBe(42);
+      }));
 });
