@@ -1,6 +1,6 @@
-import { Test, TestingModule } from '@nestjs/testing';
+﻿import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication, ValidationPipe } from '@nestjs/common';
-import * as request from 'supertest';
+import request from 'supertest';
 import { AppModule } from '../src/app.module';
 
 describe('Foos (e2e)', () => {
@@ -26,7 +26,15 @@ describe('Foos (e2e)', () => {
       .get('/api/words/horse')
       .expect(200)
       .expect((res) => {
-        expect(res.body).toBe(0);
+        expect(Number(res.text)).toBe(0);
+      }));
+
+  it('GET /api/words/unknown → 0', () =>
+    request(app.getHttpServer())
+      .get('/api/words/unknown')
+      .expect(200)
+      .expect((res) => {
+        expect(Number(res.text)).toBe(0);
       }));
 
   it('GET /api/words/hello → 1', () =>
@@ -34,6 +42,6 @@ describe('Foos (e2e)', () => {
       .get('/api/words/hello')
       .expect(200)
       .expect((res) => {
-        expect(res.body).toBe(1);
+        expect(Number(res.text)).toBe(1);
       }));
 });
