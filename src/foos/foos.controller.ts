@@ -1,15 +1,18 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { Foo } from './entities/foo.entity';
+
+class CreateWordDto {
+  url: string;
+}
 
 @Controller('foos')
-export class FoosController {
+export class WordsController {
   @Get()
   findAll(): string {
     return 'ok';
   }
 
   @Post()
-  create(@Body() foo: Foo): Foo {
-    return foo;
+  create(@Body() dto: CreateWordDto): string {
+    return dto.url;
   }
 }
